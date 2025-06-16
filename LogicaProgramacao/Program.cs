@@ -1,12 +1,13 @@
 ﻿
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(Kata4.AdjacentElementsProduct(new int[] { 40, 5, 8 }));
+        Console.WriteLine(Kata5.ReturnEvenOrOdd(6));
     }
 
 }
@@ -50,7 +51,7 @@ public class Program
 
 #endregion
 
-#region Execicio 1#
+#region Exercicio 1#
 public class Kata1
 {
     //object[] resultado = Kata.IsVow(new object[] { // MOCK
@@ -103,7 +104,7 @@ public class Kata1
 
 #endregion
 
-#region Execicio 2#
+#region Exercicio 2#
 
 //productArray({ 1,5,2}) ==> return { 10,2,5}
 
@@ -178,7 +179,7 @@ public class Kata2
 //Finalmente, o quinto elemento 900 é o produto de todos os elementos da matriz, exceto o quinto elemento 2
 #endregion
 
-#region Execicio 3#
+#region Exercicio 3#
 
 public static class Kata3
 {
@@ -235,7 +236,7 @@ getIssuer(5105105105105106) == "Mastercard"
 getIssuer(9111111111111111) == "Unknown"*/
 #endregion
 
-#region Execicio 4#
+#region Exercicio 4#
 public class Kata4 // 1 2 3 4 5
 {                  //  1 2 3 4
     public static int AdjacentElementsProduct(int[] array)
@@ -282,4 +283,17 @@ Os números podem ser positivos, negativos ou zero.
 [9, 5, 10, 2, 24, -1, -48] → produto máximo é 5 * 10 = 50
 
 [-23, 4, -5, 99, -27, 329, -2, 7, -921] → produto máximo é -2 * 7 = -14*/
+#endregion
+
+#region Exercicio 5
+public static class Kata5
+{
+    public static string ReturnEvenOrOdd(int number)
+    {
+        return number % 2 == 0 ? "Even" : "Odd";
+    }
+}
+
+
+/*Crie uma função que receba um inteiro como argumento e retorne "Even" para números pares ou "Odd" para números ímpares.*/
 #endregion
