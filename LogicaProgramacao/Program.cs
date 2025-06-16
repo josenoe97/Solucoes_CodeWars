@@ -1,13 +1,8 @@
-﻿
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-public class Program
+﻿public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(Kata5.ReturnEvenOrOdd(6));
+        Console.WriteLine(Kata6.MaxProduct(new int[] { 4, 3, 5 }, 2));
     }
 
 }
@@ -285,7 +280,7 @@ Os números podem ser positivos, negativos ou zero.
 [-23, 4, -5, 99, -27, 329, -2, 7, -921] → produto máximo é -2 * 7 = -14*/
 #endregion
 
-#region Exercicio 5
+#region Exercicio 5#
 public static class Kata5
 {
     public static string ReturnEvenOrOdd(int number)
@@ -296,4 +291,45 @@ public static class Kata5
 
 
 /*Crie uma função que receba um inteiro como argumento e retorne "Even" para números pares ou "Odd" para números ímpares.*/
+#endregion
+
+#region Exercicio 6#
+
+public static class Kata6
+{
+    public static int MaxProduct(int[] arr, int size)
+    {
+        var ordenado = arr.OrderByDescending(x => x).ToArray();
+
+        int produto = 1;
+
+        for (int i = 0; i < size; i++)
+        {
+            produto *= ordenado[i];
+        }
+
+        return produto;
+    }
+}
+
+//Melhor solução:
+// return arr.OrderBy(i => -i).Take(size).Aggregate((x, y) => x * y);
+
+/*
+Tarefa
+Dado um array/lista [] de inteiros, encontre o produto dos k números máximos.
+
+Observações
+O tamanho do array/lista é de pelo menos 3.
+
+Os números do array/lista serão uma mistura de positivos, negativos e zeros.
+
+Pode ocorrer repetição de números no array/lista.
+
+Exemplo 
+maxProduct ({4, 3, 5}, 2) ==>  return (20)
+
+Como o tamanho (k) é igual a 2, então a subsequência de tamanho 2 cujo produto dos máximos é 5 * 4 = 20.
+ 
+ */
 #endregion
