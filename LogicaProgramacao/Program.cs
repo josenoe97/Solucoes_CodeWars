@@ -1,8 +1,9 @@
-﻿public class Program
+﻿
+public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(Kata6.MaxProduct(new int[] { 4, 3, 5 }, 2));
+        Console.WriteLine(Kata7.ArrayLeaders(new int[] { 0, -1, -29, 3, 2 }));
     }
 
 }
@@ -330,6 +331,57 @@ Exemplo
 maxProduct ({4, 3, 5}, 2) ==>  return (20)
 
 Como o tamanho (k) é igual a 2, então a subsequência de tamanho 2 cujo produto dos máximos é 5 * 4 = 20.
+ 
+ */
+#endregion
+
+#region Exercicio 7 
+
+public static class Kata7
+{ // logica antiga afetou nos indices, logo foi reprovado no teste.
+    public static int[] ArrayLeaders(int[] numbers) 
+    {
+        var sum = numbers.Sum();
+        List<int> resultado = new List<int>();
+
+        foreach (var num in numbers)
+        {
+            if (num > (sum -= num))
+                resultado.Add(num);
+        }
+            
+
+        return resultado.ToArray();
+    }
+
+}
+
+//public static int[] ArrayLeaders(int[] n) => n.Where((x, i) => x > n.Skip(i + 1).Sum()).ToArray();
+
+
+/*
+Definição
+Um elemento é líder se for maior que a soma de todos os elementos ao seu lado direito.
+
+Tarefa
+Dado um array/lista [] de inteiros, encontre todos os LÍDERES no array.
+
+Notas
+O tamanho da matriz/lista é de pelo menos 3 .
+
+Os números da matriz/lista serão uma mistura de positivos, negativos e zeros
+
+Pode ocorrer repetição de números na matriz/lista.
+
+Array/list retornado deve armazenar os números iniciais na mesma ordem no array/list original.
+
+ Input >> Output Examples:
+arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+
+Explanation:
+4 is greater than the sum all the elements to its right side
+
+Note : The last element 0 is equal to right sum of its elements (abstract zero).
  
  */
 #endregion
