@@ -1,9 +1,11 @@
 ﻿
+using System.ComponentModel;
+
 public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(Kata7.ArrayLeaders(new int[] { 0, -1, -29, 3, 2 }));
+        Console.WriteLine(Kata8.MaxGap(new int[] { 13, 10, 5, 2, 9 }));
     }
 
 }
@@ -132,11 +134,11 @@ public class Kata2
         return productArray;
     }
 
-/*    public static int[] ProductArray(int[] array) //  --MELHOR PRATICA CODEWARS--
-    {
-        var product = array.Aggregate((x, y) => x * y);
-        return array.Select(x => product / x).ToArray();
-    }*/
+    /*    public static int[] ProductArray(int[] array) //  --MELHOR PRATICA CODEWARS--
+        {
+            var product = array.Aggregate((x, y) => x * y);
+            return array.Select(x => product / x).ToArray();
+        }*/
 
     //public static int[] ProductValuesOrder(int[] array) // IA CODIGO
     //{
@@ -335,11 +337,11 @@ Como o tamanho (k) é igual a 2, então a subsequência de tamanho 2 cujo produt
  */
 #endregion
 
-#region Exercicio 7 
+#region Exercicio 7#
 
 public static class Kata7
 { // logica antiga afetou nos indices, logo foi reprovado no teste.
-    public static int[] ArrayLeaders(int[] numbers) 
+    public static int[] ArrayLeaders(int[] numbers)
     {
         var sum = numbers.Sum();
         List<int> resultado = new List<int>();
@@ -349,7 +351,6 @@ public static class Kata7
             if (num > (sum -= num))
                 resultado.Add(num);
         }
-            
 
         return resultado.ToArray();
     }
@@ -384,4 +385,64 @@ Explanation:
 Note : The last element 0 is equal to right sum of its elements (abstract zero).
  
  */
+#endregion#
+
+#region Exercicio 8#
+
+public static class Kata8
+{
+    public static int MaxGap(int[] numbers)
+    {
+        int maiorValor = 0;
+
+        numbers = numbers.OrderByDescending(x => x).ToArray();
+
+        for (int i = 0; i < numbers.Length - 1; i++)
+        {
+
+            int diferenca = numbers[i] - numbers[i + 1];
+
+            if (diferenca < 0)
+                diferenca *= -1;
+
+            if (diferenca > maiorValor)
+                maiorValor = diferenca;
+
+        }
+
+        return maiorValor;
+    }
+}
+
+// Outras soluções:/*/*
+/*Array.Sort(numbers);
+return numbers.Zip(numbers.Skip(1), (a, b) => b - a).Max();**//*/
+
+----
+
+return numbers
+.OrderBy(i => i)
+.Skip(1)
+.Zip(numbers.OrderBy(i => i), (a, b) => Math.Abs(b - a))
+.Max();            
+
+---
+
+/*Dada uma matriz/lista [] de inteiros, Encontre a diferença máxima entre os elementos sucessivos em sua forma classificada.
+
+Anotações
+O tamanho da matriz/lista é de pelo menos 3 .
+
+Números de array/lista Será uma mistura de positivos e negativos também zeros_
+
+A repetição de números na matriz/lista pode ocorrer.
+
+A lacuna máxima é calculada independentemente do sinal.*/
+
+/*Exemplos de entrada >> saída
+maxGap ({13,10,5,2,9}) ==> return (4)
+
+Explicação:
+A lacuna máxima após classificar a matriz é , A diferença entre .49 - 5 = 4*/
+
 #endregion
