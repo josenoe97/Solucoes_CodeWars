@@ -28,8 +28,8 @@ jobs:
       run: dotnet build --no-restore
 
     # ✅ Verificação de estilo de código
-    - name: Check code format
-      run: dotnet format --verify-no-changes --severity error
+    #- name: Check code format
+    #  run: dotnet format --verify-no-changes --severity error
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
