@@ -49,7 +49,6 @@ var numbersAndWords = numbers.Zip(words, (first, second) => first + " " + second
 foreach (var item in numbersAndWords)
     Console.WriteLine(item);
 */
-
 #endregion
 
 #region Exercicio 1#
@@ -266,8 +265,8 @@ public static class Kata9
                          {
                              var sum = numbers.Sum() + x;
                              return sum > 1 &&
-                                    Enumerable.Range(2, (int)Math.Sqrt(sum) - 1) // seleção do 2 até soma - 1
-                                              .All(i => sum % i != 0); // verificar se sum não é divisível por nenhum número de 2 até // OBS: o "i" ele incrementa até encontrar o próximo número primo.
+                                    Enumerable.Range(2, (int)Math.Sqrt(sum) - 1)// seleção do 2 até soma - 1
+                                              .All(i => sum % i != 0);// verificar se sum não é divisível por nenhum número de 2 até // OBS: o "i" ele incrementa até encontrar o próximo número primo.
                          });
     }
 }
