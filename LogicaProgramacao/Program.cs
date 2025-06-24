@@ -1,11 +1,18 @@
 ﻿
 using System.ComponentModel;
+using System.Net.Sockets;
 
 public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(Kata8.MaxGap(new int[] { 13, 10, 5, 2, 9 }));
+        int[] numbers = new int[] {13,10,5,2,9};
+
+        Console.WriteLine(numbers
+       .OrderBy(i => i)
+       .Skip(1)
+       .Zip(numbers.OrderBy(i => i), (a, b) => Math.Abs(b - a))
+       .Max());
     }
 
 }
@@ -46,6 +53,24 @@ public class Program
           .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
       foreach (var kvp in resultado)
           Console.WriteLine($"Chave: {kvp.Key}, Valor: {kvp.Value}");*/
+
+
+//Uso do ZIP
+
+/*int[] numbers = { 1, 2, 3, 4 };
+string[] words = { "one", "two", "three" };
+
+var numbersAndWords = numbers.Zip(words, (first, second) => first + " " + second);
+
+foreach (var item in numbersAndWords)
+    Console.WriteLine(item);
+
+// This code produces the following output:
+
+// Concatenou os "numbers" com "words" OBS: mas serve para outra coisas além de concatenação.
+// 1 one 
+// 2 two
+// 3 three*/
 
 #endregion
 
