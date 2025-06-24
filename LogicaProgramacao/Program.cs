@@ -9,7 +9,7 @@ public class Program
     }
 }
 
-#region Teste - estudos
+# region Teste - estudos
 
 /*
 var dict = new Dictionary<string, int>();
@@ -49,8 +49,11 @@ var numbersAndWords = numbers.Zip(words, (first, second) => first + " " + second
 foreach (var item in numbersAndWords)
     Console.WriteLine(item);
 */
-#endregion
-#region Exercicio 1#
+
+# endregion
+
+# region Exercicio 1
+
 public class Kata1
 {
     public static object[] IsVow(object[] a)
