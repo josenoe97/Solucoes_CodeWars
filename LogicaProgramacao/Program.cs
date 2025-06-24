@@ -50,9 +50,7 @@ foreach (var item in numbersAndWords)
     Console.WriteLine(item);
 */
 #endregion
-
 #region Exercicio 1#
-
 public class Kata1
 {
     public static object[] IsVow(object[] a)
