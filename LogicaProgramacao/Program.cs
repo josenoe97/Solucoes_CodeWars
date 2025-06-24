@@ -5,13 +5,7 @@ public class Program
 {
     public static void Main()
     {
-        int[] numbers = new int[] { 13, 10, 5, 2, 9 };
-
-        Console.WriteLine(numbers
-            .OrderBy(i => i)
-            .Skip(1)
-            .Zip(numbers.OrderBy(i => i), (a, b) => Math.Abs(b - a))
-            .Max());
+        Kata9.MinimumNumber(new int[]{2, 12, 8, 4, 6});
     }
 }
 
@@ -259,4 +253,70 @@ public static class Kata8
     }
 }
 
+#endregion
+
+#region Exercicio 9#
+
+public static class Kata9
+{
+    public static int MinimumNumber(int[] numbers)
+    {
+        return Enumerable.Range(0, int.MaxValue)
+                         .First(x =>
+                         {
+                             var sum = numbers.Sum() + x;
+                             return sum > 1 &&
+                                    Enumerable.Range(2, (int)Math.Sqrt(sum) - 1) // seleção do 2 até soma - 1
+                                              .All(i => sum % i != 0); // verificar se sum não é divisível por nenhum número de 2 até // OBS: o "i" ele incrementa até encontrar o próximo número primo.
+                         });
+    }
+}
+
+
+/*Tarefa
+Dada uma lista de números inteiros positivos, determine o número inteiro não negativo mínimo que precisa ser inserido para que a soma de todos os elementos se torne um número primo.
+
+Observações
+- A lista sempre terá pelo menos 2 elementos.
+- Todos os elementos serão números inteiros positivos (n > 0).
+- A lista pode conter valores duplicados.
+- A nova soma deve ser o número primo mais próximo que seja maior ou igual à soma atual.
+
+Exemplos
+[3, 1, 2] ==> Deve retornar 1
+Explicação: A soma é 6
+O número primo mais próximo maior ou igual a 6 é 7
+Precisamos adicionar 1 para que a soma seja 7 (um primo)
+
+[2, 12, 8, 4, 6] ==> Deve retornar 5
+Explicação: A soma é 32
+O primo mais próximo maior ou igual a 32 é 37
+Precisamos adicionar 5 para fazer a soma 37 (um primo)
+
+[50, 39, 49, 6, 17, 28] ==> Deveria retornar 2
+Explicação: A soma é 189
+O primo mais próximo maior ou igual a 189 é 191
+Precisamos adicionar 2 para que a soma seja 191 (um primo)Tarefa
+Dada uma lista de números inteiros positivos, determine o número inteiro não negativo mínimo que precisa ser inserido para que a soma de todos os elementos se torne um número primo.
+
+Observações
+A lista sempre terá pelo menos 2 elementos.
+Todos os elementos serão números inteiros positivos (n > 0).
+A lista pode conter valores duplicados.
+A nova soma deve ser o número primo mais próximo que seja maior ou igual à soma atual.
+Exemplos
+[3, 1, 2] ==> Deve retornar 1
+Explicação: A soma é 6
+O número primo mais próximo maior ou igual a 6 é 7
+Precisamos adicionar 1 para que a soma seja 7 (um primo)
+
+[2, 12, 8, 4, 6] ==> Deve retornar 5
+Explicação: A soma é 32
+O primo mais próximo maior ou igual a 32 é 37
+Precisamos adicionar 5 para fazer a soma 37 (um primo)
+
+[50, 39, 49, 6, 17, 28] ==> Deveria retornar 2
+Explicação: A soma é 189
+O primo mais próximo maior ou igual a 189 é 191
+Precisamos adicionar 2 para que a soma seja 191 (um primo)*/
 #endregion
